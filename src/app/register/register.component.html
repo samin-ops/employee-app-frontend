@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row">
+    <div class="col mt-5">
+      <div class="card-body offset-4 text-white">
+        <form #RegisterForm="ngForm">
+          <div class="mb-3">
+            <input type="text"  #name="ngModel" [(ngModel)]="user.name" name="name" placeholder="Full Name" required="#">
+          </div>
+          <div class="mb-3">
+            <input type="text" #email="ngModel" [(ngModel)]="user.email" name="email" placeholder="email">
+          </div>
+          <div class="mb-3">
+            <input type="password" #password="ngModel" [(ngModel)]="user.password" name="password" placeholder="Enter your password">
+          </div>
+          <div class="mb-3">
+            <input type="submit" value="Sign Up">
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+  <div class="mb-3">
+    <p>Deja enregistrer ! Alors connecter vous:</p>
+  </div>
+</div>
+
+

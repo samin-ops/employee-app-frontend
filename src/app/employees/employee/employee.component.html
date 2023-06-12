@@ -1,0 +1,81 @@
+
+      <div class="container">
+        <div class="row">
+          <div class="col mt-5">
+            <div class="card bg-primary text-white">
+              <div class="card-body">
+                <form #employeeForm="ngForm" (ngSubmit)="onSubmit(employeeForm)">
+                  <div class="mb-3">
+                    <input  type="hidden" name="_id" #name="ngModel" [(ngModel)]="employeeService.selectedEmployee._id" class="form-control">
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label">Name:
+                      <label class="text-danger">*</label>
+                    </label>
+                    <input class="form-control" type="text" name="name"  #name="ngModel" [(ngModel)]="employeeService.selectedEmployee.name" placeholder="Enter full Name" required>
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label">Position:</label>
+                    <input class="form-control" type="text" name="position"  #name="ngModel" [(ngModel)]="employeeService.selectedEmployee.position" placeholder="eg: Jnr. developer">
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label">Office:</label>
+                    <input class="form-control" type="text" name="office"  #name="ngModel" [(ngModel)]="employeeService.selectedEmployee.office" placeholder="Enter Office Name">
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label">Salary:</label>
+                    <input class="form-control" type="text" name="salary"  #name="ngModel" [(ngModel)]="employeeService.selectedEmployee.salary" placeholder="Enter annual salary">
+                  </div>
+                  <button type="submit" class="btn btn-primary" [disabled]="!employeeForm.valid">Submit</button>
+                  <button type="button" class="btn btn-success m-2" (click)="resetForm(employeeForm)">Reset</button>
+                </form>
+              </div>
+            </div>
+          </div>
+          <div class="col mt-3">
+            <div class="card bg-primary">
+              <div class="card-header">
+                  <h1 class="text-center text-white">Employees List</h1>
+              </div>
+              <div class="card-body">
+                <table aria-describedby="#"  class="table table-stripped table-hover text-white">
+                  <thead>
+                    <tr>
+                      <th scope="col">Name</th>
+                      <th scope="col">Position</th>
+                      <th scope="col">Office</th>
+                      <th scope="col">Salary</th>
+                      <th></th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let emp of employees">
+                      <td>{{emp.name}}</td>
+                      <td>{{emp.position}}</td>
+                      <td>{{emp.office}}</td>
+                      <td>{{emp.salary}}</td>
+                      <td>
+                        <div class="btn"  (click)="onEdit(emp)">
+                          <span class="bi bi-pen"></span>
+                        </div>
+                      </td>
+                      <td>
+                        <div class="btn" (click)="onDelete(emp._id, employeeForm)">
+                          <span class="bi bi-trash"></span>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+
+
